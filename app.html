@@ -4,38 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script rel="stylesheet" href="style.css"></script>
     <script src="app.js" defer></script>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script rel="stylesheet" href="style.css"></script>
     <title>Horoscope</title>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-fluid" style="background-image: url(Assets/staryNight.jpeg);">
         <div class="container text-center">
             <div class="row">
-                <div class="col">
+                <div class="col" style="background-color: rgb(133, 221, 221);">
+                    <div class="col" id="results" style="background-image: url(./Assets/Galaxy.jpeg);"></div>
                     <h2>What's your Sign?</h1>
                         <form>
                         <label for="signs">Sign:
-                        <select id="signs">
+                        <select class="form-select-md" id="signs">
                             <option value="???">????</option>
                         </select>
                     </label>
-                        <label for="signs">DOB
+                        <label for="signs">What's the day like?
                         <input type="date" id="date">
                     </label>
-                        <input type="submit">
+                        <input class="btn btn-outline-success" class="btn hover:bg-green" type="submit">
+                    </div>
                     </form>
+                    <p id="errFlag"></p>
+                    <div class="card" style="width: 18rem;">
+                    <p id="advice"></p>
+                    </div>
                 </div>
-                <div class="col" id="sign_image">
-                </div>
-                <div class="col">
-                    OTHER/DRINK
+                <div class="justify-content-lg-center" id="sign_image">
                 </div>
             </div>
         </div>

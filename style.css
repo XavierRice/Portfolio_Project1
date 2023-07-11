@@ -1,4 +1,30 @@
-img{
-    height: 40px;
-    width: auto;
+*{
+    padding: 0;
+    margin: 0;
 }
+
+#results{
+    display: grid;
+}
+
+.card {
+    border: 3px solid #4f7d5d;
+    padding: 25px;
+  }
+
+#hoverBttn{
+
+        width: 40px;
+        height: 5ex;
+        background-color: gold;
+        border: 2px solid firebrick;
+        border-radius: 10px;
+        font-weight: bold;
+        color: black;
+        cursor: pointer;
+    
+}
+
+.my-heading:hover {
+    color: rgb(222, 144, 35) !important;
+  }
