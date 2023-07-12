@@ -15,11 +15,11 @@
 </head>
 
 <body>
-    <div class="container-fluid" style="background-image: url(Assets/staryNight.jpeg);">
+    <div class="container-fluid" style="background-image: url(Assets/staryNight.jpeg);">  <!--a fluid container in Bootstrap makes margins zero and drags the divs to the view width of the screen and not center-->
         <div class="container text-center">
             <div class="row">
                 <div class="col" style="background-color: rgb(133, 221, 221);">
-                    <div class="col" id="results" style="background-image: url(./Assets/Galaxy.jpeg);"></div>
+                    <div class="col" id="results" style="background-image: url(./Assets/Galaxy.jpeg);"></div>  <!--I don't know why this isn't working??? Should be a stary background instead of just white!-->
                     <h2>What's your Sign?</h1>
                         <form>
                         <label for="signs">Sign:
@@ -30,7 +30,7 @@
                         <label for="signs">What's the day like?
                         <input type="date" id="date">
                     </label>
-                        <input class="btn btn-outline-success" class="btn hover:bg-green" type="submit">
+                        <input class="btn btn-outline-success" class="btn hover:bg-green" type="submit"> <!--this is my hover selector-->
                     </div>
                     </form>
                     <p id="errFlag"></p>
