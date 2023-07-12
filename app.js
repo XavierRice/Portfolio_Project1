@@ -81,6 +81,7 @@ function resultsCard(string) {                               // making cards to 
     const h3Title = document.createElement("h3")
     h3Title.classList.add("HoroLabel")
     h3Title.innerText = 'Your Daily Horoscope:'
+    h3Title.style.color="blue"
 
    // const h2Header = document.createElement("h2")     // I wanted to add my user sign to the top of my header results card, but as of send in time it's giving me issues. This feature is an after thought and not part of my MVP
    // h2Header.innerText = `${userSign}`
@@ -90,7 +91,7 @@ function resultsCard(string) {                               // making cards to 
     pHoroscope.style.color="purple"
 
     if (pHoroscope.innerHTML === undefined) {
-        pHoroscope.innerHTML = "<strong><em>You have broken the past, present and future.Try again!</em></strong>"
+        pHoroscope.innerHTML = "<strong><em>You have broken either the past, present and future.Try again!</em></strong>"
     }
 
     resultCard.append(pHoroscope)
