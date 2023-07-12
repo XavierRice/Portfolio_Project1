@@ -8,7 +8,7 @@ const options = {     // this api requires fullfilment of the options and this s
     }
 };
 
-fetch('https://horoscope34.p.rapidapi.com/api/horoscope/signs', options)
+fetch('https://horoscope34.p.rapidapi.com/api/horoscope/signs', options)  // fetches take two arguements, though with only one it automatially "GETS", the second argument is options that takes in a method and headers.
     .then((response) => response.json())            // This has to do with a "promise" made by the fetch statement and formatting that into JSON data.
     .then((JSONresponse) => {
         const results = JSONresponse.payload         // The returned results which is now an object/
@@ -17,7 +17,7 @@ fetch('https://horoscope34.p.rapidapi.com/api/horoscope/signs', options)
 
         const col2 = document.getElementById("sign_image")    //using the DOM to access my col
         const select = document.querySelector("select")       // and my select
-        test(document)
+       
 
         for (let sign of signs) {                                 //looping through my images gathered in my fetch
             const option = document.createElement("option")
@@ -52,13 +52,13 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();                             // i can hear sam now- "EVENT DOT PREVENT"
 
     let userSign = event.target["signs"].value          //storing the vaule of the sign the user selected so i can access it later in another fetch.
-    let userDate = event.target["date"].value         // ** I don't know if I'll have this working by the time i turn it in, but you will be able to look up the horoscope for any day once finished.
-      
+    let userDate = event.target["date"].value         // ** I don't know if I'll have this working by the time i turn it in, but you will be able to look up the horoscope for any day once finished. I'm having trouble fetching two different things in the same event listner.
+
     if (userSign === "???") {                         // if you sumbit the form w/out selecting a sign an err message pop's up
         errFlag.innerHTML = "<h4><Strong>Must Enter Sign</Strong></h4>"
         errFlag.style.color = "orange"
         form.reset()                                //then resetting the form and err flag so it doesn't stay on screen.
-        setTimeout(errFlag.reset, 2000)
+        setTimeout(errFlag.reset, 1000)
     }
 
     fetch('https://horoscope34.p.rapidapi.com/api/horoscope/today', options1)
@@ -70,8 +70,6 @@ form.addEventListener("submit", (event) => {
         })
         .catch((err) => test(err))
 
-
-
 })
 
 
@@ -82,16 +80,21 @@ function resultsCard(string) {                               // making cards to 
 
     const h3Title = document.createElement("h3")
     h3Title.classList.add("HoroLabel")
-    h3Title.innerText = "Your Daily Horoscope"
+    h3Title.innerText = 'Your Daily Horoscope:'
+
+   // const h2Header = document.createElement("h2")     // I wanted to add my user sign to the top of my header results card, but as of send in time it's giving me issues. This feature is an after thought and not part of my MVP
+   // h2Header.innerText = `${userSign}`
 
     const pHoroscope = document.createElement("p")
     pHoroscope.innerHTML = `${string}`
- 
-    if(pHoroscope.innerHTML === undefined){
+    pHoroscope.style.color="purple"
+
+    if (pHoroscope.innerHTML === undefined) {
         pHoroscope.innerHTML = "<strong><em>You have broken the past, present and future.Try again!</em></strong>"
     }
 
     resultCard.append(pHoroscope)
+   //resultCard.appendChild(h2Header)           // when i add this in it doesn't appear at the top of the screen for some reason.
     resultCard.appendChild(h3Title)
     resultsCol.append(resultCard)
 
@@ -106,14 +109,12 @@ function resultsCard(string) {                               // making cards to 
             const h6Advice = document.createElement("h6")
             h6Advice.innerHTML = results.slip.advice
             h6Advice.style.textAlign = "center"
-            h6Advice.classList.add("fs-4")
+            h6Advice.classList.add("fs-4")       //adding this class list for bootstrap adds the border and dimension. 
             h6Advice.style.color = "red"
             advice.append(h6Advice)
         })
 
-
-
 }
 
-const images = document.getElementsByClassName("signs")
+setTimeout(resultsCol.reset, 9000)
 
