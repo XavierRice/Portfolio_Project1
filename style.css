@@ -4,7 +4,7 @@
 }
 
 #results{
-    display: grid;
+    display: grid;      /* here's where i impliment my grid */
 }
 
 .card {
@@ -26,5 +26,8 @@
 }
 
 .my-heading:hover {
-    color: rgb(222, 144, 35) !important;
+    color: rgb(222, 144, 35) !important;    /*important is a new key word for me, it allows for a rule to take precident above others...execpt of Bootstap which is why it aint working*/
   }
+
+
+  

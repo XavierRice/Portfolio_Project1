@@ -17,7 +17,8 @@ fetch('https://horoscope34.p.rapidapi.com/api/horoscope/signs', options)
 
         const col2 = document.getElementById("sign_image")    //using the DOM to access my col
         const select = document.querySelector("select")       // and my select
-        
+        test(document)
+
         for(let sign of signs){                                 //looping through my images gathered in my fetch
             const option = document.createElement("option")
             option.classList.add("options")
