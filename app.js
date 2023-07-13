@@ -50,6 +50,7 @@ const form = document.querySelector("form")
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();                             // i can hear sam now- "EVENT DOT PREVENT"
+    setTimeout(resultsCol.reset, 6000)
 
     let userSign = event.target["signs"].value          //storing the vaule of the sign the user selected so i can access it later in another fetch.
     let userDate = event.target["date"].value         // ** I don't know if I'll have this working by the time i turn it in, but you will be able to look up the horoscope for any day once finished. I'm having trouble fetching two different things in the same event listner.
@@ -87,39 +88,39 @@ form.addEventListener("submit", (event) => {
             resultsCard(results[`${userSign}`])
         })
         .catch((err) => test(err))
-
-})
-
-
-function resultsCard(string) {                               // making cards to display my information. As i grow this project, i'd like to add another image to the card and maybe include another api that draws tarot cards for you.
-
-    const resultCard = document.createElement("div")       //there is ingrown functionaility using classes on BOOTSTRAP, as they say im "strapped in".
-    resultCard.classList.add("card")
-
-    const h3Title = document.createElement("h3")
-    h3Title.classList.add("HoroLabel")
-    h3Title.innerText = 'Your Daily Horoscope:'
-    h3Title.style.color="blue"
-
-    //const h2Header = document.createElement("h2")     // I wanted to add my user sign to the top of my header results card, but as of send in time it's giving me issues. This feature is an after thought and not part of my MVP
-    //h2Header.innerText = `${userSign}`
-
-    const pHoroscope = document.createElement("p")
-    pHoroscope.innerHTML = `${string}`
-    pHoroscope.style.color="purple"
-
-    if (pHoroscope.innerHTML === undefined) {
-        pHoroscope.innerHTML = "<strong><em>You have broken either the past, present and future.Try again!</em></strong>"
-    }
-
-    resultCard.append(pHoroscope)
-    //resultCard.appendChild(h2Header)           // when i add this in it doesn't appear at the top of the screen for some reason.
-    resultCard.appendChild(h3Title)
-    resultsCol.append(resultCard)
-
-    const advice = document.getElementById("advice")
-
-    fetch("https://api.adviceslip.com/advice")
+        
+    })
+    
+    
+    function resultsCard(string) {                               // making cards to display my information. As i grow this project, i'd like to add another image to the card and maybe include another api that draws tarot cards for you.
+        
+        const resultCard = document.createElement("div")       //there is ingrown functionaility using classes on BOOTSTRAP, as they say im "strapped in".
+        resultCard.classList.add("card")
+        
+        const h3Title = document.createElement("h3")
+        h3Title.classList.add("HoroLabel")
+        h3Title.innerText = 'Your Daily Horoscope:'
+        h3Title.style.color="blue"
+        
+        //const h2Header = document.createElement("h2")     // I wanted to add my user sign to the top of my header results card, but as of send in time it's giving me issues. This feature is an after thought and not part of my MVP
+        //h2Header.innerText = `${userSign}`
+        
+        const pHoroscope = document.createElement("p")
+        pHoroscope.innerHTML = `${string}`
+        pHoroscope.style.color="purple"
+        
+        if (pHoroscope.innerHTML === undefined) {
+            pHoroscope.innerHTML = "<strong><em>You have broken either the past, present and future.Try again!</em></strong>"
+        }
+        
+        resultCard.append(pHoroscope)
+        //resultCard.appendChild(h2Header)           // when i add this in it doesn't appear at the top of the screen for some reason.
+        resultCard.appendChild(h3Title)
+        resultsCol.append(resultCard)
+        
+        const advice = document.getElementById("advice")
+        
+        fetch("https://api.adviceslip.com/advice")
         .then((response) => response.json())
         .then((JSONresponse) => {
             const results = JSONresponse
@@ -131,8 +132,8 @@ function resultsCard(string) {                               // making cards to 
             h6Advice.style.color = "red"
             advice.append(h6Advice)
         })
-
-}
-
-setTimeout(resultsCol.reset, 9000)
-
+        
+        
+        }
+        
+        
