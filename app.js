@@ -65,8 +65,26 @@ form.addEventListener("submit", (event) => {
         .then((response) => response.json())
         .then((JSONresponse) => {
             const results = JSONresponse.payload
-            resultsCard(results[`${userSign}`])
+            test(results[`${userSign}`])
 
+        })
+        .catch((err) => test(err))
+
+
+        const options2 = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '95e39c8565mshd52d9d5c85d8b80p174bd5jsn5b0ef354524f',
+                'X-RapidAPI-Host': 'horoscope34.p.rapidapi.com'
+            }
+        };
+
+
+    fetch(`https://horoscope34.p.rapidapi.com/api/horoscope/byDate?date=${userDate}`, options2)
+        .then((response) => response.json())
+        .then((JSONresponse) => {
+            const results = JSONresponse.payload
+            resultsCard(results[`${userSign}`])
         })
         .catch((err) => test(err))
 
@@ -83,8 +101,8 @@ function resultsCard(string) {                               // making cards to 
     h3Title.innerText = 'Your Daily Horoscope:'
     h3Title.style.color="blue"
 
-   // const h2Header = document.createElement("h2")     // I wanted to add my user sign to the top of my header results card, but as of send in time it's giving me issues. This feature is an after thought and not part of my MVP
-   // h2Header.innerText = `${userSign}`
+    //const h2Header = document.createElement("h2")     // I wanted to add my user sign to the top of my header results card, but as of send in time it's giving me issues. This feature is an after thought and not part of my MVP
+    //h2Header.innerText = `${userSign}`
 
     const pHoroscope = document.createElement("p")
     pHoroscope.innerHTML = `${string}`
@@ -95,7 +113,7 @@ function resultsCard(string) {                               // making cards to 
     }
 
     resultCard.append(pHoroscope)
-   //resultCard.appendChild(h2Header)           // when i add this in it doesn't appear at the top of the screen for some reason.
+    //resultCard.appendChild(h2Header)           // when i add this in it doesn't appear at the top of the screen for some reason.
     resultCard.appendChild(h3Title)
     resultsCol.append(resultCard)
 
@@ -105,8 +123,7 @@ function resultsCard(string) {                               // making cards to 
         .then((response) => response.json())
         .then((JSONresponse) => {
             const results = JSONresponse
-            test(results.slip.advice)
-
+            
             const h6Advice = document.createElement("h6")
             h6Advice.innerHTML = results.slip.advice
             h6Advice.style.textAlign = "center"
