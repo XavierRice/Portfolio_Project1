@@ -50,7 +50,7 @@ const form = document.querySelector("form")
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();                             // i can hear sam now- "EVENT DOT PREVENT"
-    setTimeout(resultsCol.reset, 6000)
+    setTimeout(() => resultsCol.innerHTML = "", 6000)
 
     let userSign = event.target["signs"].value          //storing the vaule of the sign the user selected so i can access it later in another fetch.
     let userDate = event.target["date"].value         // ** I don't know if I'll have this working by the time i turn it in, but you will be able to look up the horoscope for any day once finished. I'm having trouble fetching two different things in the same event listner.
@@ -59,7 +59,7 @@ form.addEventListener("submit", (event) => {
         errFlag.innerHTML = "<h4><Strong>Must Enter Sign</Strong></h4>"
         errFlag.style.color = "orange"
         form.reset()                                //then resetting the form and err flag so it doesn't stay on screen.
-        setTimeout(errFlag.reset, 1000)
+        setTimeout( () => errFlag.innerHTML = "", 1000)
     }
 
     fetch('https://horoscope34.p.rapidapi.com/api/horoscope/today', options1)
@@ -136,3 +136,8 @@ function resultsCard(string) {                               // making cards to 
 
 }
 
+function resetStuff(){
+    errFlag.innerHTML = "";
+    form.reset();
+    resultsCol.innerHTML = "";
+}
