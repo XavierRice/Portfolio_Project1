@@ -9,10 +9,11 @@ This project is:
 [x] this project has a coherent theme and narrative of horoscopes and pemonition~ 
 [x] project is deployed to the web through git pages. https://xavierrice.github.io/Portfolio_Project1/
 
-[x] application has at least two .html files that are connected.
+[x] application has at least two .html files that are connected by the nav bar on both pages.
 [x] application has one .css file that is linked to two pages.
-[x] application has one .js file that are linked to two pages.
+[x] application has one .js file that are linked to one page.
 [x] makes use of CSS Grid to organize your content on the app page. *Although by using BOOTSTRAP, it creates it own 12 block grid and impliments flex.
+    so my grid is on the column.
 [x] uses the :hover selector in an inline rule on the submit button.
 [x] uses an HTML form to select your fire sign on the app.html page.
 [x] have some visual changes that occur when the screen is a different size.
