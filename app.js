@@ -59,7 +59,7 @@ form.addEventListener("submit", (event) => {
         errFlag.innerHTML = "<h4><Strong>Must Enter Sign</Strong></h4>"
         errFlag.style.color = "orange"
         form.reset()                                //then resetting the form and err flag so it doesn't stay on screen.
-        setTimeout( () => errFlag.innerHTML = "", 1000)
+        setTimeout(() => errFlag.innerHTML = "", 1000)
     }
 
     fetch('https://horoscope34.p.rapidapi.com/api/horoscope/today', options1)
@@ -136,7 +136,7 @@ function resultsCard(string) {                               // making cards to 
 
 }
 
-function resetStuff(){
+function resetStuff() {
     errFlag.innerHTML = "";
     form.reset();
     resultsCol.innerHTML = "";
