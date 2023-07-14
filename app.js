@@ -17,7 +17,7 @@ fetch('https://horoscope34.p.rapidapi.com/api/horoscope/signs', options)  // fet
 
         const col2 = document.getElementById("sign_image")    //using the DOM to access my col
         const select = document.querySelector("select")       // and my select
-       
+
 
         for (let sign of signs) {                                 //looping through my images gathered in my fetch
             const option = document.createElement("option")
@@ -72,59 +72,59 @@ form.addEventListener("submit", (event) => {
         .catch((err) => test(err))
 
 
-        const options2 = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': '95e39c8565mshd52d9d5c85d8b80p174bd5jsn5b0ef354524f',
-                'X-RapidAPI-Host': 'horoscope34.p.rapidapi.com'
-            }
-        };
+    const options2 = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '95e39c8565mshd52d9d5c85d8b80p174bd5jsn5b0ef354524f',
+            'X-RapidAPI-Host': 'horoscope34.p.rapidapi.com'
+        }
+    };
 
 
     fetch(`https://horoscope34.p.rapidapi.com/api/horoscope/byDate?date=${userDate}`, options2)
         .then((response) => response.json())
         .then((JSONresponse) => {
             const results = JSONresponse.payload
-            resultsCard(results[`${userSign}`])
+            resultsCard(results[userSign])
         })
         .catch((err) => test(err))
-        
-    })
-    
-    
-    function resultsCard(string) {                               // making cards to display my information. As i grow this project, i'd like to add another image to the card and maybe include another api that draws tarot cards for you.
-        
-        const resultCard = document.createElement("div")       //there is ingrown functionaility using classes on BOOTSTRAP, as they say im "strapped in".
-        resultCard.classList.add("card")
-        
-        const h3Title = document.createElement("h3")
-        h3Title.classList.add("HoroLabel")
-        h3Title.innerText = 'Your Daily Horoscope:'
-        h3Title.style.color="blue"
-        
-        //const h2Header = document.createElement("h2")     // I wanted to add my user sign to the top of my header results card, but as of send in time it's giving me issues. This feature is an after thought and not part of my MVP
-        //h2Header.innerText = `${userSign}`
-        
-        const pHoroscope = document.createElement("p")
-        pHoroscope.innerHTML = `${string}`
-        pHoroscope.style.color="purple"
-        
-        if (pHoroscope.innerHTML === undefined) {
-            pHoroscope.innerHTML = "<strong><em>You have broken either the past, present and future.Try again!</em></strong>"
-        }
-        
-        resultCard.append(pHoroscope)
-        //resultCard.appendChild(h2Header)           // when i add this in it doesn't appear at the top of the screen for some reason.
-        resultCard.appendChild(h3Title)
-        resultsCol.append(resultCard)
-        
-        const advice = document.getElementById("advice")
-        
-        fetch("https://api.adviceslip.com/advice")
+
+})
+
+
+function resultsCard(string) {                               // making cards to display my information. As i grow this project, i'd like to add another image to the card and maybe include another api that draws tarot cards for you.
+
+    const resultCard = document.createElement("div")       //there is ingrown functionaility using classes on BOOTSTRAP, as they say im "strapped in".
+    resultCard.classList.add("card")
+
+    const h3Title = document.createElement("h3")
+    h3Title.classList.add("HoroLabel")
+    h3Title.innerText = 'Your Daily Horoscope:'
+    h3Title.style.color = "blue"
+
+    //  const h2Header = document.createElement("h2")     // I wanted to add my user sign to the top of my header results card, but as of send in time it's giving me issues. This feature is an after thought and not part of my MVP
+    // h2Header.innerText = userSign
+
+    const pHoroscope = document.createElement("p")
+    pHoroscope.innerHTML = `${string}`
+    pHoroscope.style.color = "purple"
+
+    if (pHoroscope.innerHTML === undefined) {
+        pHoroscope.innerHTML = "<strong><em>You have broken either the past, present and future.Try again!</em></strong>"
+    }
+
+    resultCard.append(pHoroscope)
+    // resultCard.appendChild(h2Header)           // when i add this in it doesn't appear at the top of the screen for some reason.
+    resultCard.appendChild(h3Title)
+    resultsCol.append(resultCard)
+
+    const advice = document.getElementById("advice")
+
+    fetch("https://api.adviceslip.com/advice")
         .then((response) => response.json())
         .then((JSONresponse) => {
             const results = JSONresponse
-            
+
             const h6Advice = document.createElement("h6")
             h6Advice.innerHTML = results.slip.advice
             h6Advice.style.textAlign = "center"
@@ -132,8 +132,7 @@ form.addEventListener("submit", (event) => {
             h6Advice.style.color = "red"
             advice.append(h6Advice)
         })
-        
-        
-        }
-        
-        
+
+
+}
+
